@@ -530,10 +530,12 @@ function TrackRow({ track, targetSecs, onRemove, onProcess, onDownload }: {
     error: '✗ Error',
   }[track.status]
 
-  const statusColor = {
+  const statusColor = ({
     ready: 'var(--accent2)', done: 'var(--accent2)', error: 'var(--danger)',
-    fetching_info: 'var(--muted)',
-  }[track.status] || 'var(--accent)'
+    fetching_info: 'var(--muted)', queued: 'var(--accent)',
+    downloading: 'var(--accent)', converting: 'var(--accent)',
+    processing: 'var(--accent)',
+  } as Record<string, string>)[track.status] || 'var(--accent)'
 
   return (
     <div style={{
