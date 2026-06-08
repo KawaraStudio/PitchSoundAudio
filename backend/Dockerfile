@@ -8,7 +8,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
-
+COPY cookies.txt /app/cookies.txt
 ENV WORK_DIR=/tmp/nada
 ENV PORT=5000
 
