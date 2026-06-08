@@ -464,7 +464,6 @@ export default function Dashboard() {
                             : track.robloxStatus === 'uploading' ? 'var(--muted)'
                             : 'var(--accent)',
                           fontFamily: 'var(--mono)', fontSize: 11, fontWeight: 700,
-                          border: '1px solid',
                           borderColor: track.robloxStatus === 'done' ? 'rgba(71,255,232,0.3)' : 'rgba(232,255,71,0.2)',
                         }}
                       >
