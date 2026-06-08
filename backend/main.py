@@ -82,6 +82,10 @@ def get_ytdlp_opts(out_path: str, job_id: str) -> dict:
         "no_warnings": True,
         "noplaylist": True,
         "cookiefile": os.getenv("COOKIES_FILE", None),
+        "extractor_args": {"youtube": {"player_client": ["ios"]}},
+        "http_headers": {
+            "User-Agent": "com.google.ios.youtube/19.45.4 (iPhone16,2; U; CPU iPhone OS 18_1_0 like Mac OS X;)",
+        },
     }
 
 def run_download(job_id: str, url: str, target_secs: int, speed_ratio: float, amp: float):
@@ -170,7 +174,11 @@ def get_info():
         return jsonify({"error": "url required"}), 400
     try:
         opts = {"quiet": True, "no_warnings": True, "noplaylist": True,
-                "cookiefile": os.getenv("COOKIES_FILE", None)}
+                "cookiefile": os.getenv("COOKIES_FILE", None),
+                "extractor_args": {"youtube": {"player_client": ["ios"]}},
+                "http_headers": {
+                    "User-Agent": "com.google.ios.youtube/19.45.4 (iPhone16,2; U; CPU iPhone OS 18_1_0 like Mac OS X;)",
+                }}
         with yt_dlp.YoutubeDL(opts) as ydl:
             info = ydl.extract_info(url, download=False)
         return jsonify({
