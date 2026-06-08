@@ -13,5 +13,6 @@ ENV WORK_DIR=/tmp/nada
 ENV PORT=5000
 
 EXPOSE 5000
+RUN echo "cache-bust-v2"
 
 CMD ["gunicorn", "main:app", "--bind", "0.0.0.0:5000", "--workers", "2", "--threads", "4", "--timeout", "300"]
